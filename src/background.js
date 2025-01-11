@@ -126,7 +126,8 @@ const removeIframeHeadersFilter = details => {
 	log && console.debug( '#removeIframeHeadersFilter // modifying', { url: details.url, originUrl: details.originUrl } );
 
 	const responseHeaders = details.responseHeaders.filter(header => {
-		return header.name.toLowerCase() !== 'x-frame-options';
+		return header.name.toLowerCase() !== 'x-frame-options' &&
+			header.name.toLowerCase() !== 'content-security-policy';
 	});
 
 	log && console.debug( '#removeIframeHeadersFilter // new response headers', responseHeaders );
